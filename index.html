@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>dotlie store 🫁 </title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Mitr:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script>
+tailwind.config = {
+theme: {
+extend: {
+fontFamily: {
+'mitr': ['Mitr', 'sans-serif'],
+'fredoka': ['Fredoka', 'sans-serif'],
+},
+colors: {
+'pj-bg': '#f9f0eb',
+'pj-blue-light': '#ffb7bd',
+'pj-blue-main': '#b7a9a0',
+'pj-blue-dark': '#4b2c12',
+'pj-yellow-light': '#fdf5ee',
+'pj-yellow-main': '#f9a8d4',
+'pj-pink': '#ffb7bd',
+'pj-white': '#ffffff',
+},
+boxShadow: {
+'soft': '0 10px 40px -10px rgba(75, 44, 18, 0.15)',
+'hard': '4px 4px 0px 0px rgba(75, 44, 18, 0.2)',
+}
+}
+}
+}
+</script>
+<style>
+body { font-family: 'Mitr', sans-serif; background-color: #f9f0eb; overflow-x: hidden; color: #4b2c12; }
+.font-eng { font-family: 'Fredoka', sans-serif; }
+.shape-header { border-radius: 40px 100px 100px 40px; position: relative; }
+.shape-info { border-radius: 20px; }
+.shape-bubble-left { border-radius: 20px; position: relative; }
+.shape-bubble-left::after { content: ''; position: absolute; right: -15px; top: 50%; transform: translateY(-50%); border-width: 15px 0 15px 20px; border-color: transparent transparent transparent #b7a9a0; }
+.shape-nota { border-radius: 20px; position: relative; }
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #ffb7bd; border-radius: 10px; }
+.modal { transition: opacity 0.3s ease, visibility 0.3s ease; }
+.modal.active { opacity: 1; visibility: visible; }
+.modal.inactive { opacity: 0; visibility: hidden; }
+.modal-content { transition: transform 0.3s ease; transform: scale(0.95); }
+.modal.active .modal-content { transform: scale(1); }
+.bg-shapes { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; pointer-events: none; overflow: hidden; }
+</style>
+</head>
+<body class="antialiased relative selection:bg-pj-blue-light selection:text-pj-blue-dark">
+
+<div class="bg-shapes">
+    <svg class="absolute top-10 -left-10 w-64 h-64 text-pj-pink opacity-30" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <path fill="currentColor" d="M44.7,-76.4C58.8,-69.2,71.8,-59.1,81.3,-46.3C90.8,-33.5,96.8,-18,95.5,-2.9C94.2,12.2,85.6,26.9,75.3,39.6C65,52.3,53,63.1,39.4,70.5C25.8,77.9,10.6,81.9,-4.3,81.4C-19.2,80.9,-33.7,75.9,-47.5,68.4C-61.3,60.9,-74.3,50.9,-82.4,37.6C-90.5,24.3,-93.7,7.7,-91.4,-8.2C-89.1,-24.1,-81.3,-39.3,-69.9,-51.1C-58.5,-62.9,-43.5,-71.3,-29.1,-75.7C-14.7,-80.1,-1.2,-80.5,12.5,-78.9C26.2,-77.3, 30.6,-83.6, 44.7,-76.4Z" transform="translate(100 100) scale(1.1)" />
+    </svg>
+</div>
+
+<main class="max-w-[500px] mx-auto min-h-screen px-4 py-12 relative z-10 flex flex-col gap-8">
+    
+    <section class="relative">
+        <div class="absolute -top-4 -left-4 z-20">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="w-12 h-12 transform -rotate-12 drop-shadow-sm">
+                <circle cx="50" cy="50" r="45" fill="#fbcfe8" stroke="#d4b49e" stroke-width="4"/>
+                <circle cx="50" cy="50" r="32" fill="none" stroke="#d4b49e" stroke-width="2" stroke-dasharray="6 6"/>
+                <circle cx="35" cy="35" r="6" fill="#d4b49e"/><circle cx="65" cy="35" r="6" fill="#d4b49e"/>
+                <circle cx="35" cy="65" r="6" fill="#d4b49e"/><circle cx="65" cy="65" r="6" fill="#d4b49e"/>
+                <path d="M 35 35 L 65 65 M 65 35 L 35 65" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+            </svg>
+        </div>
+
+        <svg class="absolute -top-3 right-8 w-7 h-7 text-pink-300 rotate-12 drop-shadow-sm animate-pulse z-20" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 21.35l-1.45-1.32 C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3 c1.74 0 3.41.81 4.5 2.09 C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5 c0 3.78-3.4 6.86-8.55 11.54 L12 21.35z"/>
+        </svg>
+
+        <div class="shape-header bg-pj-blue-light p-8 pr-16 shadow-soft z-10 relative mt-4 ml-[-20px] mr-4">
+            <div class="absolute -top-10 -right-4 z-30 transform rotate-3 hover:rotate-0 transition-transform duration-300">
+                <div class="w-32 h-36 bg-pj-white p-2.5 pb-8 rounded shadow-lg border border-pj-blue-light/50 flex flex-col items-center relative">
+                    <div class="w-full h-full bg-pj-bg overflow-hidden rounded-sm">
+                        <img src="https://i.postimg.cc/9MHKNbcy/IMG-3761.png" alt="โลโก้" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+            <h1 class="font-eng text-4xl text-pj-white font-bold tracking-wide drop-shadow-md mb-2 relative z-10">dotlie<br><span class="text-3xl ml-4">store 🫁</span></h1>
+            <div class="inline-block bg-pj-blue-dark text-pj-white font-eng px-4 py-1.5 rounded-full text-sm mt-3 shadow-md relative z-10">
+                welcome ka 🖤🪽🦇
+            </div>
+        </div>
+        <p class="mt-6 ml-6 text-sm font-medium pr-4 relative z-10">
+            𐄙 . ֯ 𓈒ּ𓋭‧𐅛⁼֯♡︎‎┈┈‎┈┈ ดูรายละเอียด ดูคิว กับตัวอย่างงานได้เลยคับ
+        </p>
+    </section>
+
+    <section class="relative ml-8">
+        <div class="shape-info bg-pj-white border-2 border-pj-blue-light p-6 shadow-soft relative z-10">
+            <h2 class="font-eng text-xl font-bold uppercase tracking-wider text-pj-blue-dark mb-3">🧷ระยะเวลารองาน 🧷</h2>
+            <p class="text-sm font-semibold mb-4 text-pj-blue-dark/80">1 คิว ต่อ 1-3 สัปดาห์เเล้วเเต่รายละเอียดเเละจำนวนงานของคิวนั้นๆค่า 🩶➖</p>
+            
+            <div class="bg-pj-yellow-light border-2 border-dashed border-pj-blue-main p-4 rounded-xl">
+                <h3 class="text-center font-bold text-pj-blue-dark mb-2">➖รายละเอียด ➖</h3>
+                <p class="text-center text-[10px] mb-2">◟ི𓈒ׅ ͙݁𖥔. ݁ ུ࿔𓈒ׅ ̫❤︎ ̫ ུ࿔𓈒 ݂ ֹ 𓈒ִ𖥔 ݁ . ྀ◞</p>
+                <ul class="text-xs space-y-2 list-none text-pj-blue-dark/90">
+                    <li class="flex items-start gap-2"><span>-</span> ชำระเงินสามารถมัดจำครึ่งนึกก่อนเริ่ม 50% เเละจ่ายครึ่งหลังก่อนส่งงานค่ะ</li>
+                    <li class="flex items-start gap-2"><span>-</span> งานเชิงพาณิชย์ จะนับต่อเมื่อนำรูปไปตั้งโปรไฟล์ร้านค้า หรือ ใช้เพื่อการค้า</li>
+                    <li class="flex items-start gap-2"><span>-</span> ไม่รับวาด ferry คนเเก่ ผู้ชาย >(บางงานนะคะ สามารถทักมาสอบถามได้ค่ะ )</li>
+                </ul>
+            </div>
+        </div>
+        <svg class="absolute top-20 -left-3 w-5 h-5 text-pink-200 -rotate-12 drop-shadow-sm z-20" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 21.35l-1.45-1.32 C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3 c1.74 0 3.41.81 4.5 2.09 C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5 c0 3.78-3.4 6.86-8.55 11.54 L12 21.35z"/>
+        </svg>
+    </section>
+    <section class="relative mr-8 mt-4">
+        <div class="shape-bubble-left bg-pj-blue-main p-5 shadow-soft z-10 text-pj-white">
+            <div class="flex items-center gap-2 mb-3">
+                <h2 class="font-eng text-2xl font-bold tracking-wide">Portfolio</h2>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            </div>
+            <div class="flex flex-col gap-2">
+                <button class="bg-pj-white text-pj-blue-dark py-2 px-4 rounded-full text-sm font-semibold flex justify-between items-center hover:bg-pj-yellow-light transition-colors">
+                    คิวปัจจุบัน
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="9 18 15 12 9 6"/></svg>
+                </button>
+                <a href="https://drive.google.com/drive/folders/1Fnpvbpgej3TlipGd5gDDZSlK9BLWhPjs" target="_blank" class="bg-pj-white text-pj-blue-dark py-2 px-4 rounded-full text-sm font-semibold flex justify-between items-center hover:bg-pj-yellow-light transition-colors">
+                    example
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="9 18 15 12 9 6"/></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="mx-4 space-y-4">
+        <div class="shape-nota bg-pj-white border-2 border-pj-blue-main p-5 shadow-sm">
+            <h3 class="font-eng text-xl font-bold text-pj-blue-dark uppercase mb-4 text-center">ราคา commission</h3>
+            <divclass="grid grid-cols-1 gap-4">
+                <img src="https://i.postimg.cc/YqQ8qFBk/mi-m-ch-x-118-20260411163416.png" class="w-full rounded-lg shadow-sm" alt="Price 1">
+                <img src="https://i.postimg.cc/JnHsqbRB/ไม_ม_ช_อ_115_20260411155607.png" class="w-full rounded-lg shadow-sm" alt="Price 2">
+                <img src="https://i.postimg.cc/nLzjXygb/ไม_ม_ช_อ_116_20260411162830.png" class="w-full rounded-lg shadow-sm" alt="Price 3">
+                <img src="https://i.postimg.cc/MGFcVsJR/ไม_ม_ช_อ_117_20260411162943.png" class="w-full rounded-lg shadow-sm" alt="Price 4">
+            </div>
+        </div>
+    </section>
+
+    <section class="mt-8 mb-12 flex flex-col items-center relative">
+        <h2 class="font-eng text-xl font-bold text-pj-blue-dark mb-4 flex items-center gap-2">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            Contact
+        </h2>
+        <div class="flex gap-4">
+            <a href="https://www.facebook.com/kanplu.inmee?" target="_blank" class="w-12 h-12 bg-pj-white border-2 border-pj-blue-light rounded-full flex items-center justify-center text-pj-blue-dark hover:bg-pj-blue-light hover:text-pj-white transition-colors shadow-sm">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+        </div>
+
+        <div class="absolute -bottom-3 -right-3 z-20">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="w-10 h-10 transform rotate-12 drop-shadow-sm">
+                <circle cx="50" cy="50" r="45" fill="#fdf5ee" stroke="#f9a8d4" stroke-width="4"/>
+                <circle cx="50" cy="50" r="32" fill="none" stroke="#f9a8d4" stroke-width="2" stroke-dasharray="6 6"/>
+                <circle cx="35" cy="35" r="6" fill="#f9a8d4"/><circle cx="65" cy="35" r="6" fill="#f9a8d4"/>
+                <circle cx="35" cy="65" r="6" fill="#f9a8d4"/><circle cx="65" cy="65" r="6" fill="#f9a8d4"/>
+                <path d="M 35 35 L 65 65 M 65 35 L 35 65" stroke="#bc9680" stroke-width="3" stroke-linecap="round"/>
+            </svg>
+        </div>
+        <p class="text-xs font-semibold text-pj-blue-dark/60 mt-6">ขอบคุณที่ไว้วางใจ dotlie store 🫁</p>
+    </section>
+
+</main>
+
+<script>
+    // คงฟังก์ชันเดิมไว้ตามเงื่อนไข
+    function openModal(id) {
+        const modal = document.getElementById(id);
+        if(modal) { modal.classList.remove('inactive'); modal.classList.add('active'); document.body.style.overflow = 'hidden'; }
+    }
+    function closeModal(id) {
+        const modal = document.getElementById(id);
+        if(modal) { modal.classList.remove('active'); modal.classList.add('inactive'); document.body.style.overflow = ''; }
+    }
+</script>
+</body>
+</html>
